@@ -15,8 +15,7 @@ echo "uvx hf download $model_name --local-dir $model_path"
 uvx hf download $model_name --local-dir $model_path
 
 # Convert to ONNX
-ls .venv
-.venv/Scripts/paddle2onnx \
+.venv/bin/paddle2onnx \
 --model_dir $model_path \
 --model_filename inference.json \
 --params_filename inference.pdiparams \
