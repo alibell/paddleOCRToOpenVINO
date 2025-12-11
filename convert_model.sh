@@ -25,5 +25,5 @@ uvx hf download $model_name --local-dir $model_path
 uvx --from openvino ovc $model_onnx_path --output_model $model_openvino_path
 
 # Build artifact
-tar -czf ./artifacts/$filename.onnx.tar -C $(dirname "$model_onnx_path") $(basename "$model_onnx_path")
-tar -czf ./artifacts/$filename.openvino.tar -C $(dirname "$model_openvino_path") $(basename "$model_openvino_path")/*
+tar -czf ./artifacts/$filename.onnx.tar.gz -C $(dirname "$model_onnx_path") $(basename "$model_onnx_path")
+tar -czf ./artifacts/$filename.openvino.tar.gz -C $(dirname "$model_openvino_path") $(basename "$model_openvino_path")/*
