@@ -1,4 +1,4 @@
-name: build
+name: create_tag
 on:
   push:
     branches:
@@ -16,6 +16,6 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/v' + context.sha.slice(0, 10),
+              ref: 'refs/tags/' + context.sha.slice(0, 10),
               sha: context.sha
             })
