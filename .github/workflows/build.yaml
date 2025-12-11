@@ -23,13 +23,15 @@ jobs:
           python -m pip install paddle2onnx
       - name: Convert to ONNX
         run: |
-          mkdir models
+          mkdir original_models
           mkdir converted_models
           
           # Download model
-          uvx hf download PaddlePaddle/latin_PP-OCRv5_mobile_rec --local-dir models/PaddlePaddle/latin_PP-OCRv5_mobile_rec
+          uvx hf download PaddlePaddle/latin_PP-OCRv5_mobile_rec \
+            --local-dir original_models/PaddlePaddle/latin_PP-OCRv5_mobile_rec
+
           paddle2onnx \
-            --model_dir models/PaddlePaddle/latin_PP-OCRv5_mobile_rec \
+            --model_dir original_models/PaddlePaddle/latin_PP-OCRv5_mobile_rec \
             --model_filename inference.json \
             --params_filename inference.pdiparams \
             --save_file converted_models/latin_PP-OCRv5_mobile_rec.onnx
