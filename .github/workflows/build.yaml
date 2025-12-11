@@ -16,11 +16,19 @@ jobs:
           python-version: '3.12'
       - name: Install uv
         uses: astral-sh/setup-uv@v7
+      - uses: actions/cache@v4
+        with:
+          path: .venv
+          key: ${{ runner.os }}-1
+          restore-keys: |
+            ${{ runner.os }}-
       - name: Install paddle2onnx
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          python -m pip install paddlepaddle -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
-          python -m pip install paddleocr
-          python -m pip install paddle2onnx
+          python -m venv .venv 
+          .venv/bin/python -m pip install paddlepaddle -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
+          .venv/bin/python -m pip install paddleocr
+          .venv/bin/python -m pip install paddle2onnx
       - name: Convert to ONNX
         run: |
           mkdir original_models
