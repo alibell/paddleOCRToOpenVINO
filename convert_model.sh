@@ -11,6 +11,7 @@ mkdir -p onnx_models/$filename/
 mkdir -p openvino_models/$filename/
 
 # Download model
+echo "uvx hf download $model_name --local-dir $model_path"
 uvx hf download $model_name --local-dir $model_path
 
 # Convert to ONNX
