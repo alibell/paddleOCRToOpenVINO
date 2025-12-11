@@ -1,0 +1,21 @@
+name: build
+on:
+  push:
+    branches:
+        - main
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    permissions:
+        packages: write
+        contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Install paddle2onnx
+        run: |
+          python -m pip install paddlepaddle -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
+          python -m pip install paddleocr
+          paddlex --install paddle2onnx
