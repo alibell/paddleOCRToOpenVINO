@@ -14,6 +14,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
       - name: Install paddle2onnx
         run: |
           python -m pip install paddlepaddle -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
@@ -21,4 +23,13 @@ jobs:
           python -m pip install paddle2onnx
       - name: Convert to ONNX
         run: |
-          paddle2onnx -h
+          mkdir models
+          mkdir converted_models
+          
+          # Download model
+          uvx hf download PaddlePaddle/latin_PP-OCRv5_mobile_rec --local-dir models/PaddlePaddle/latin_PP-OCRv5_mobile_rec
+          paddle2onnx \
+            --model_dir models/PaddlePaddle/latin_PP-OCRv5_mobile_rec \
+            --model_filename inference.json \
+            --params_filename inference.pdiparams \
+            --save_file converted_models/latin_PP-OCRv5_mobile_rec.onnx
