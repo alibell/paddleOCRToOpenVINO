@@ -6,8 +6,6 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    permissions:
-        contents: read
     steps:
       - name: Create tag
         uses: actions/github-script@v5
