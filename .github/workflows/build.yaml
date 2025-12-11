@@ -24,14 +24,17 @@ jobs:
       - name: Convert to ONNX
         run: |
           mkdir original_models
-          mkdir converted_models
+          mkdir onnx_models
+          mkdir openvino_models
+          mkdir artifacts
+          chmod +x ./convert_models.sh && chmod +x ./convert_model.sh
           
-          # Download model
-          uvx hf download PaddlePaddle/latin_PP-OCRv5_mobile_rec \
-            --local-dir original_models/PaddlePaddle/latin_PP-OCRv5_mobile_rec
-
-          paddle2onnx \
-            --model_dir original_models/PaddlePaddle/latin_PP-OCRv5_mobile_rec \
-            --model_filename inference.json \
-            --params_filename inference.pdiparams \
-            --save_file converted_models/latin_PP-OCRv5_mobile_rec.onnx
+          # Run script
+          ./convert_models.sh
+      - uses: softprops/action-gh-release@v2
+        with:
+          fail_on_unmatched_files: true
+          files: /home/runner/artifacts/*.tar
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
