@@ -1,8 +1,7 @@
 name: build
 on:
-  create:
-    tags:
-      - '*'
+  branches:
+    - main
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -35,6 +34,7 @@ jobs:
         with:
           fail_on_unmatched_files: true
           files: /home/runner/artifacts/*.tar
+          tag_name: github.ref_name
           make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
