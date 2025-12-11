@@ -34,7 +34,7 @@ jobs:
         with:
           fail_on_unmatched_files: true
           files: /home/runner/artifacts/*.tar
-          tag_name: github.ref_name
+          tag_name: ${{ github.run_id }}
           make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
