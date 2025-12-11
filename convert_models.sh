@@ -9,6 +9,12 @@ while IFS= read -r model_name; do
     ./convert_model.sh $model_name > /dev/null
 
     if [ $? -ne 0 ]; then
+        failures += $model_name
         echo "/!\ Failure while converting $model_name /!\ "
     fi
 done < ./models
+
+# Raise error
+if [ "$failure" != "" ]; then
+    exit 1
+fi
