@@ -13,11 +13,9 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
-            const tag = context.sha;  // full commit hash
-
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/${tag}',
+              ref: 'refs/tags/' + context.sha,
               sha: context.sha
             })
