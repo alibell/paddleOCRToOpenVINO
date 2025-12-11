@@ -2,7 +2,6 @@
 
 # We loop over model names
 failures=''
-ls -l .venv
 while IFS= read -r model_name; do
     model_name="${model_name%$'\r'}"   # remove trailing \r
     echo "Converting $model_name ..."

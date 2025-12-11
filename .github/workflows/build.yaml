@@ -42,7 +42,7 @@ jobs:
       - uses: softprops/action-gh-release@v2
         with:
           fail_on_unmatched_files: true
-          files: /home/runner/artifacts/*.tar
+          files: /home/runner/work/paddleOCRToOpenVINO/artifacts/*.tar
           tag_name: ${{ github.run_id }}
           make_latest: true
         env:
