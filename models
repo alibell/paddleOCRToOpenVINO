@@ -1,8 +1,17 @@
 PaddlePaddle/latin_PP-OCRv5_mobile_rec
+PaddlePaddle/latin_PP-OCRv5_server_rec
 PaddlePaddle/PP-OCRv5_mobile_rec
+PaddlePaddle/PP-OCRv5_server_rec
 PaddlePaddle/PP-OCRv5_mobile_det
+PaddlePaddle/PP-OCRv5_server_det
 PaddlePaddle/PP-OCRv4_mobile_rec
+PaddlePaddle/PP-OCRv4_server_rec
 PaddlePaddle/PP-OCRv4_mobile_det
+PaddlePaddle/PP-OCRv4_server_det
 PaddlePaddle/latin_PP-OCRv3_mobile_rec
 PaddlePaddle/PP-OCRv3_mobile_rec
+PaddlePaddle/PP-OCRv3_server_rec
 PaddlePaddle/PP-OCRv3_mobile_det
+PaddlePaddle/PP-OCRv3_server_det
+PaddlePaddle/PP-LCNet_x1_0_doc_ori
+PaddlePaddle/PP-LCNet_x1_0_textline_ori
