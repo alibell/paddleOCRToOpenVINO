@@ -26,7 +26,7 @@ cp $model_path/config.json $model_openvino_path/config.json
 --save_file $model_onnx_path/model.onnx
 
 # Convert to OpenVino
-uvx --from openvino ovc $model_onnx_path --output_model $model_openvino_path
+uvx --from openvino ovc $model_onnx_path --output_model $model_openvino_path || true
 
 # Build artifact
 tar -czf ./artifacts/$filename.onnx.tar.gz -C $(dirname "$model_onnx_path") $(basename "$model_onnx_path")
