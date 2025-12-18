@@ -23,7 +23,7 @@ cp $model_path/config.json $model_openvino_path/config.json
 --model_dir $model_path \
 --model_filename inference.json \
 --params_filename inference.pdiparams \
---save_file $model_onnx_path/model.raw.onnx
+--save_file $filename.model.raw.onnx
 
 # Optimizing onnx model
 # onnx optimizer is built for 3.11
