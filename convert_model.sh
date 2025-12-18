@@ -23,7 +23,11 @@ cp $model_path/config.json $model_openvino_path/config.json
 --model_dir $model_path \
 --model_filename inference.json \
 --params_filename inference.pdiparams \
---save_file $model_onnx_path/model.onnx
+--save_file $model_onnx_path/model.raw.onnx
+
+# Optimizing onnx model
+# onnx optimizer is built for 3.11
+uvx -p 3.11 onnxoptimizer ./$filename.model.raw.onnx $model_onnx_path/model.onnx
 
 # Convert to OpenVino
 uvx --from openvino ovc $model_onnx_path/model.onnx --compress_to_fp16=True --output_model $model_openvino_path || true
