@@ -34,8 +34,8 @@ uvx --from openvino ovc $model_onnx_path/model.onnx --compress_to_fp16=True --ou
 
 # Create OpenVino 8 bit model
 mkdir -p $model_openvino_path.int8
-cp $model_path/config.json $model_onnx_path.int8/config.json
-uv run compress_model --input_dir $model_onnx_path --output_dir $model_onnx_path.int8 --compression_mode INT8_SYM
+cp $model_path/config.json $model_openvino_path.int8/config.json
+uv run compress_model --input_dir $model_openvino_path --output_dir $model_openvino_path.int8 --compression_mode INT8_SYM
 
 # Build artifact
 tar -czf ./artifacts/$filename.onnx.tar.gz -C $(dirname "$model_onnx_path") $(basename "$model_onnx_path")
