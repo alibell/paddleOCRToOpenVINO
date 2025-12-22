@@ -20,7 +20,8 @@ parser.add_argument(
 #   https://github.com/openvinotoolkit/nncf/blob/develop/docs/usage/post_training_compression/weights_compression/Usage.md#mixed-precision-modes
 parser.add_argument(
     "--compression_mode",
-    type=Literal[
+    type=str,
+    choices=[
         'FP4',
         'FP8_E4M3',
         'INT4_ASYM',
