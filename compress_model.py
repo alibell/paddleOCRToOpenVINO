@@ -60,7 +60,7 @@ model = core.read_model(
 # Compress model
 compressed_model = compress_weights(
     model=model,
-    model=compression_mode,
+    mode=compression_mode,
 )
 
 # Save model
