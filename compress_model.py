@@ -68,5 +68,8 @@ compressed_model = compress_weights(
 os.makedirs(args.output_dir, exist_ok=True)
 ov.save_model(
     compressed_model,
-    str(args.output_dir)
+    str(
+        args.output_dir /
+        "model.xml"
+    )
 )
