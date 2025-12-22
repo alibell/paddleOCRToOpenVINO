@@ -1,0 +1,10 @@
+[project]
+name = "paddleocrtoopenvino"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "nncf>=2.19.0",
+    "openvino>=2025.4.1",
+]
